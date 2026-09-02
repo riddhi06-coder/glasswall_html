@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/font-awesome-pro.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/media.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
   </head>
   <body class="">
     <!-- header start -->
@@ -423,8 +424,18 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form id="jobApplicationForm" enctype="multipart/form-data">
+                  <form id="jobApplicationForm" action="career-submit.php" method="post" enctype="multipart/form-data" novalidate>
                     <div class="row">
+                      <div class="col-12 mb-3">
+                        <label for="jobRole" class="form-label">
+                          Position Applied For
+                        </label>
+                        <input type="text"
+                                class="form-control"
+                                id="jobRole"
+                                name="job_role"
+                                readonly>
+                      </div>
                       <div class="col-md-6 mb-3">
                         <label for="firstName" class="form-label">
                           First Name
@@ -437,6 +448,7 @@
                                 id="firstName"
                                 name="first_name"
                                 required>
+                        <small class="form-error" data-for="first_name"></small>
                       </div>
                       <div class="col-md-6 mb-3">
                         <label for="lastName" class="form-label">
@@ -450,6 +462,7 @@
                                 id="lastName"
                                 name="last_name"
                                 required>
+                        <small class="form-error" data-for="last_name"></small>
                       </div>
                       <div class="col-md-6 mb-3">
                         <label for="emailAddress" class="form-label">
@@ -463,6 +476,7 @@
                                 id="emailAddress"
                                 name="email"
                                 required>
+                        <small class="form-error" data-for="email"></small>
                       </div>
                       <div class="col-md-6 mb-3">
                         <label for="contactNo" class="form-label">
@@ -475,7 +489,10 @@
                                 class="form-control"
                                 id="contactNo"
                                 name="contact_no"
+                                inputmode="numeric"
+                                maxlength="10"
                                 required>
+                        <small class="form-error" data-for="contact_no"></small>
                       </div>
                       <div class="col-12 mb-3">
                         <label for="resume" class="form-label">
@@ -491,8 +508,9 @@
                                 accept=".pdf,.doc,.docx"
                                 required>
                         <div class="form-text">
-                          Accepted formats: PDF, DOC, DOCX
+                          Accepted formats: PDF, DOC, DOCX (max 3 MB)
                         </div>
+                        <small class="form-error" data-for="resume"></small>
                       </div>
                       <div class="col-12 mb-3">
                         <label for="message" class="form-label">
@@ -505,7 +523,7 @@
                         </textarea>
                       </div>
                       <div class="col-12">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#jobApplyModal" class="tp-btn tp-btn-white">
+                        <button type="submit" class="tp-btn tp-btn-white">
                                       <span class="tp-btn-text tp-btn-white">
                                         Submit Application
                                       </span>
@@ -517,7 +535,8 @@
                                           </path>
                                         </svg>
                                       </span>
-                                    </a>
+                                    </button>
+                        <div class="form-status" data-status></div>
                       </div>
                     </div>
                   </form>
@@ -616,5 +635,6 @@
   -->
   <script src="assets/js/main.js">
   </script>
+  <script src="assets/js/forms.js"></script>
 </body>
 </html>

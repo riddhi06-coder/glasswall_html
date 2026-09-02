@@ -1,0 +1,21 @@
+/* Form validation + status styles (contact + careers) */
+.req { color: #e11d48; }
+.form-label span { color: #e11d48; }           /* careers labels wrap * in <span> */
+
+.form-error {
+  display: block;
+  color: #e11d48;
+  font-size: 12px;
+  margin-top: 5px;
+  line-height: 1.35;
+}
+input.field-invalid,
+textarea.field-invalid,
+select.field-invalid { border-color: #e11d48 !important; }
+
+.form-status { margin-top: 12px; font-size: 14px; min-height: 1em; font-weight: 500; }
+.form-status.success { color: #0a8a5f; }
+.form-status.error   { color: #e11d48; }
+
+.tp-btn:disabled,
+button.tp-btn[disabled] { opacity: .65; cursor: not-allowed; pointer-events: none; }

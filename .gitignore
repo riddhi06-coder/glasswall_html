@@ -1,6 +1,13 @@
 # DB credentials — differ per environment; never commit. Use config/db.example.php.
 config/db.php
 
+# Mail/SMTP credentials — never commit. Use config/mail.example.php.
+config/mail.php
+
+# Uploaded resumes
+uploads/resumes/*
+!uploads/resumes/.gitkeep
+
 # Archives — not needed in the repo
 *.zip
 

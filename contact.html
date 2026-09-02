@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/font-awesome-pro.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/media.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
   </head>
   <body class="">
     <!-- header start -->
@@ -160,31 +161,36 @@
                         Keep in touch with us
                       </h2>
                     </div>
-            <form action="#">
+            <form id="contactForm" action="contact-submit.php" method="post" novalidate>
       <div class="row">
               <div class="tp-contect-box-input mb-10 col-lg-6">
-                <label>Name *</label>
-                <input type="text" />
+                <label>Name <span class="req">*</span></label>
+                <input type="text" name="name" id="cf_name" />
+                <small class="form-error" data-for="name"></small>
               </div>
               <div class="tp-contect-box-input mb-10 col-lg-6">
-                <label>Email *</label>
-                <input type="email" />
+                <label>Email <span class="req">*</span></label>
+                <input type="email" name="email" id="cf_email" />
+                <small class="form-error" data-for="email"></small>
               </div>
               <div class="tp-contect-box-input mb-10 col-lg-6">
-                <label>Company *</label>
-                <input type="text" />
+                <label>Company <span class="req">*</span></label>
+                <input type="text" name="company" id="cf_company" />
+                <small class="form-error" data-for="company"></small>
               </div>
               <div class="tp-contect-box-input mb-10 col-lg-6">
-                <label>Phone *</label>
-                <input type="text" />
+                <label>Phone <span class="req">*</span></label>
+                <input type="text" name="phone" id="cf_phone" inputmode="numeric" maxlength="10" />
+                <small class="form-error" data-for="phone"></small>
               </div>
               <div class="tp-contect-box-input mb-20 col-lg-12">
-                <label>Message *</label>
-                <textarea></textarea>
+                <label>Message <span class="req">*</span></label>
+                <textarea name="message" id="cf_message"></textarea>
+                <small class="form-error" data-for="message"></small>
               </div>
               </div>
               <div class="tp-contect-box-input mb-10">
-                 <a href="#" class="tp-btn tp-btn-white">
+                 <button type="submit" class="tp-btn tp-btn-white">
                     <span class="tp-btn-text tp-btn-white">Submit</span>
                     <span class="tp-btn-icon">
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -192,7 +198,8 @@
                         <path d="M0.75 0.75H10.75V10.75" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                       </svg>
                     </span>
-                  </a>
+                  </button>
+                  <div class="form-status" data-status></div>
               </div>
             </form>
           </div>
@@ -235,5 +242,6 @@
     <script src="assets/js/jaralax.min.js"></script>
     <!-- <script src="assets/js/cursor.js"></script> -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/forms.js"></script>
   </body>
 </html>
