@@ -23,4 +23,9 @@
     }
     load('site-header', 'partials/header.html');
     load('site-footer', 'partials/footer.html');
+
+    // Load the header search script (after the header markup is in the DOM).
+    var s = document.createElement('script');
+    s.src = 'assets/js/search.js';
+    document.body.appendChild(s);
 })();

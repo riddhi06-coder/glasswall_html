@@ -286,6 +286,7 @@
     <script src="assets/js/jaralax.min.js"></script>
     <!-- <script src="assets/js/cursor.js"></script> -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/search.js"></script>
 
 </body>
 </html>
