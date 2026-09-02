@@ -15,6 +15,22 @@ if (mb_strlen($q) < 2) {
 
 $results = [];
 
+// ---- Project categories -------------------------------------------------
+try {
+    $catStmt = db()->prepare('SELECT name, slug FROM categories WHERE name LIKE ? ORDER BY sort_order');
+    $catStmt->execute(['%' . $q . '%']);
+    foreach ($catStmt as $r) {
+        $results[] = [
+            'type'  => 'Category',
+            'title' => $r['name'],
+            'sub'   => 'Project Category',
+            'url'   => 'projects.php?category=' . rawurlencode($r['slug']),
+        ];
+    }
+} catch (Throwable $e) {
+    // ignore
+}
+
 // ---- Products (static pages) + their sub-products (card titles) ----------
 $productPages = [
     'facade-and-curtain-wall-systems.html' => 'Facade & Curtain Wall Systems',

@@ -93,6 +93,7 @@ try {
         border-radius: 20px; padding: 3px 9px; white-space: nowrap;
       }
       #gwsSearchResults .gws-tag.product { background: #0a8a5f; }
+      #gwsSearchResults .gws-tag.category { background: #b45309; }
       .gws-search-empty { padding: 10px 4px; color: #777; font-size: 13px; }
     </style>
 </head>

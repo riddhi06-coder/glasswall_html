@@ -72,7 +72,9 @@
             return;
         }
         list.innerHTML = items.map(function (it) {
-            var tagClass = it.type === 'Product' ? 'gws-tag product' : 'gws-tag';
+            var tagClass = 'gws-tag';
+            if (it.type === 'Product') tagClass += ' product';
+            else if (it.type === 'Category') tagClass += ' category';
             return '<li><a href="' + escapeHtml(it.url) + '">' +
                    '<span>' + escapeHtml(it.title) +
                    (it.sub ? '<br><small>' + escapeHtml(it.sub) + '</small>' : '') + '</span>' +
