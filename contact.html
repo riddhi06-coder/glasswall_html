@@ -164,7 +164,7 @@
             <form id="contactForm" action="contact-submit.php" method="post" novalidate>
       <div class="row">
               <div class="tp-contect-box-input mb-10 col-lg-6">
-                <label>Name <span class="req">*</span></label>
+                <label>Full Name <span class="req">*</span></label>
                 <input type="text" name="name" id="cf_name" />
                 <small class="form-error" data-for="name"></small>
               </div>
@@ -174,13 +174,16 @@
                 <small class="form-error" data-for="email"></small>
               </div>
               <div class="tp-contect-box-input mb-10 col-lg-6">
-                <label>Company <span class="req">*</span></label>
+                <label>Company Name <span class="req">*</span></label>
                 <input type="text" name="company" id="cf_company" />
                 <small class="form-error" data-for="company"></small>
               </div>
               <div class="tp-contect-box-input mb-10 col-lg-6">
                 <label>Phone <span class="req">*</span></label>
-                <input type="text" name="phone" id="cf_phone" inputmode="numeric" maxlength="10" />
+                <div class="phone-group">
+                  <span class="phone-prefix">+91</span>
+                  <input type="text" name="phone" id="cf_phone" inputmode="numeric" maxlength="10" />
+                </div>
                 <small class="form-error" data-for="phone"></small>
               </div>
               <div class="tp-contect-box-input mb-20 col-lg-12">

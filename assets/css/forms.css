@@ -19,3 +19,29 @@ select.field-invalid { border-color: #e11d48 !important; }
 
 .tp-btn:disabled,
 button.tp-btn[disabled] { opacity: .65; cursor: not-allowed; pointer-events: none; }
+
+/* Contact message box: normal line spacing (theme sets line-height:56px on textareas) */
+.tp-contect-box-input textarea {
+  line-height: 1.6 !important;
+  padding: 14px 22px !important;
+}
+
+/* +91 phone prefix box */
+.phone-group { display: flex; align-items: stretch; }
+.phone-group .phone-prefix {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  height: 54px;
+  padding: 0 18px;
+  background-color: var(--tp-gray-color, #f2f2f2);
+  color: #404038;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 58px 0 0 58px;
+}
+.phone-group input {
+  flex: 1 1 auto;
+  border-radius: 0 58px 58px 0 !important;
+  padding-left: 16px !important;
+}

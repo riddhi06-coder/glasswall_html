@@ -26,6 +26,9 @@ if ($errors) {
     json_out(['ok' => false, 'errors' => $errors]);
 }
 
+// Prefix the country code for storage + emails (input holds the 10 digits).
+$phone = '+91 ' . $phone;
+
 // ---- Store ----
 try {
     $stmt = db()->prepare(

@@ -169,7 +169,7 @@
 
                                 <li>
                                     <a href="projects.php?category=commercial">
-                                        Commercial &amp; Hospitality
+                                        Commercial and Hospitality
                                     </a>
                                 </li>
 

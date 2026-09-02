@@ -4,13 +4,13 @@ require_once __DIR__ . '/config/db.php';
 // ---- Resolve category (default: residential) ----------------
 $category_slug = isset($_GET['category']) ? trim($_GET['category']) : 'residential';
 
-$catStmt = db()->prepare('SELECT id, name, slug FROM categories WHERE slug = ? LIMIT 1');
+$catStmt = db()->prepare('SELECT id, name, slug, banner_image FROM categories WHERE slug = ? LIMIT 1');
 $catStmt->execute([$category_slug]);
 $category = $catStmt->fetch();
 
 // Unknown category -> fall back to the first category.
 if (!$category) {
-    $category = db()->query('SELECT id, name, slug FROM categories ORDER BY sort_order LIMIT 1')->fetch();
+    $category = db()->query('SELECT id, name, slug, banner_image FROM categories ORDER BY sort_order LIMIT 1')->fetch();
 }
 
 // ---- Fetch projects for this category -----------------------
@@ -32,7 +32,7 @@ require __DIR__ . '/includes/header.php';
 ?>
 
                 <!-- hero area start -->
-<section class="tp-breadcrumb-area tp-bg tp-overlay p-relative" data-background="assets/images/banner/5650.webp">
+<section class="tp-breadcrumb-area tp-bg tp-overlay p-relative" data-background="assets/images/banner/projects.webp">
         <div class="container">
             <div class="tp-breadcrumb pb-50">
                 <div class="page-heading">
