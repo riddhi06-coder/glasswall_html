@@ -1,0 +1,5 @@
+# Run PHP inside .html / .htm files so shared PHP includes (header/footer) work
+# without renaming pages away from the .html extension.
+<FilesMatch "\.(html|htm)$">
+    SetHandler application/x-httpd-php
+</FilesMatch>

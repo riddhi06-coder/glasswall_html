@@ -1,0 +1,11 @@
+# DB credentials — differ per environment; never commit. Use config/db.example.php.
+config/db.php
+
+# Archives — not needed in the repo
+*.zip
+
+# Videos over GitHub's hard 100 MB-per-file limit (cannot be pushed at all).
+# Deploy these to the server via FTP / cPanel instead.
+assets/pdf/Hindi_Glass_Wall_Systems_Sebi.mp4
+assets/pdf/English_Glass_Wall_Systems_Sebi.mp4
+assets/images/video/GlassWallSystems-video.mp4
