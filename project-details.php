@@ -61,6 +61,20 @@ $page_title = $project['title'] . ' – Glass Wall Systems';
 
 require __DIR__ . '/includes/header.php';
 ?>
+<style>
+  /* Uniform project image frame on the detail page */
+  .tp-project-details-info img {
+    width: 100%;
+    height: clamp(260px, 34vw, 460px);
+    object-fit: cover;
+    object-position: center 62%;   /* bias downward: less sky, more building */
+    border-radius: 20px;
+    display: block;
+  }
+  @media (max-width: 767px) {
+    .tp-project-details-info img { height: 240px; }
+  }
+</style>
 
                 <!-- hero area start -->
 <section class="tp-breadcrumb-area tp-bg tp-overlay p-relative" data-background="<?= e($project['category_banner']) ?>">
