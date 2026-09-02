@@ -39,6 +39,18 @@ $scope_items = $scopeStmt->fetchAll(PDO::FETCH_COLUMN);
 // Detail hero image falls back to the listing thumbnail.
 $detail_image = !empty($project['main_image']) ? $project['main_image'] : $project['thumb_image'];
 
+// Choose the display fit by the image's own aspect ratio:
+//  - portrait (tall building)  -> show the WHOLE image (contain) over a blurred backdrop
+//  - landscape                 -> cover, biased down (trims sky)
+$detail_is_portrait = false;
+$detail_abs = __DIR__ . '/' . ltrim($detail_image, '/');
+if (is_file($detail_abs)) {
+    $dim = @getimagesize($detail_abs);
+    if ($dim && !empty($dim[1]) && ($dim[0] / $dim[1]) < 0.95) {
+        $detail_is_portrait = true;
+    }
+}
+
 // Replace "&" with "and" in any displayed text.
 function no_amp($text) {
     return str_replace(['&amp;', '&'], 'and', (string) $text);
@@ -63,16 +75,29 @@ require __DIR__ . '/includes/header.php';
 ?>
 <style>
   /* Uniform project image frame on the detail page */
+  /* Landscape images: fill the banner, trim the sky */
   .tp-project-details-info img {
     width: 100%;
     height: clamp(260px, 34vw, 460px);
     object-fit: cover;
-    object-position: center 62%;   /* bias downward: less sky, more building */
+    object-position: center 62%;
     border-radius: 20px;
     display: block;
   }
+  /* Portrait images (tall buildings): show the WHOLE building, tall and centered */
+  .tp-project-details-info.is-portrait { text-align: center; }
+  .tp-project-details-info.is-portrait img {
+    width: auto;
+    max-width: 100%;
+    height: clamp(420px, 64vw, 720px);
+    object-fit: contain;
+    margin: 0 auto;
+    border-radius: 20px;
+    display: inline-block;
+  }
   @media (max-width: 767px) {
     .tp-project-details-info img { height: 240px; }
+    .tp-project-details-info.is-portrait img { height: 60vh; }
   }
 </style>
 
@@ -109,7 +134,7 @@ require __DIR__ . '/includes/header.php';
         <div class="container">
 <div class="row">
     <div class="col-lg-8 mx-auto">
-        <div class="tp-project-details-info br-20 mb-40 text-center">
+        <div class="tp-project-details-info br-20 mb-40 text-center<?= $detail_is_portrait ? ' is-portrait' : '' ?>">
             <img src="<?= e($detail_image) ?>" alt="<?= e($project['title']) ?>" class="w-100 br-20" />
         </div>
     </div>

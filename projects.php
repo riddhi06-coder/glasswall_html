@@ -74,8 +74,19 @@ require __DIR__ . '/includes/header.php';
                 <?php foreach ($projects as $project): ?>
             <div class="grid-item col-lg-4 col-md-6 col-sm-6 mb-30">
                 <div class="tpservices2 p-relative">
+                    <?php
+                        // Portrait (tall building) thumbs show the whole image at natural height;
+                        // landscape thumbs keep their fixed masonry height.
+                        $thumb_abs = __DIR__ . '/' . ltrim($project['thumb_image'], '/');
+                        $thumb_portrait = false;
+                        if (is_file($thumb_abs)) {
+                            $td = @getimagesize($thumb_abs);
+                            if ($td && !empty($td[1]) && ($td[0] / $td[1]) < 0.95) $thumb_portrait = true;
+                        }
+                    ?>
                     <div class="tpservices2__thumb br-15 mb-40">
-                        <img src="<?= e($project['thumb_image']) ?>" alt="<?= e($project['title']) ?>" class="project-thumb-img" style="height: <?= (int) $project['thumb_height'] ?>px;">
+                        <img src="<?= e($project['thumb_image']) ?>" alt="<?= e($project['title']) ?>" class="project-thumb-img"
+                             style="<?= $thumb_portrait ? 'height:auto;' : 'height:' . (int) $project['thumb_height'] . 'px;' ?>">
                     </div>
                     <div class="tpservices2__main">
                         <div class="tpservices2__content">
